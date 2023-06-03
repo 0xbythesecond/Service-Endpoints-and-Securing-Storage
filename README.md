@@ -12,26 +12,33 @@ In this lesson, you will learn how to configure service endpoints and secure sto
   
 </summary>  
 
-Sign in to the Azure portal using an account with the Owner or Contributor role in the Azure subscription.
+- Sign in to the Azure portal using an account with the Owner or Contributor role in the Azure subscription.
 
-In the Azure portal, search for "Virtual networks" and click on it.
+- In the Azure portal, search for "Virtual networks" and click on it.
 
-On the Virtual Networks blade, click "+ Create" to create a new virtual network.
+- On the Virtual Networks blade, click "+ Create" to create a new virtual network.
 
-On the Basics tab of the Create virtual network blade, specify the following settings:
+- On the Basics tab of the Create virtual network blade, specify the following settings:
 
 | Subscription: | Select the Azure subscription you are using for this lab.|
 | ---------| ------- | 
 | Resource group: | Click "Create new" and enter the name "AZ500LAB12".|
 | Name: | Enter "myVirtualNetwork".|
 | Region: | Select "(US) South Central US".|
-On the IP addresses tab of the Create virtual network blade, set the IPv4 address space to "10.0.0.0/16".
 
-In the Subnet name column, click on "default" and on the Edit subnet blade, specify the following settings:
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/223e7bcc-44f9-45eb-ba23-7b35cad0fc24" height="60%" width="60%" alt="Create Virtual Network"/>  
+  
+- On the IP addresses tab of the Create virtual network blade, set the IPv4 address space to "10.0.0.0/16".
+
+- In the Subnet name column, click on "default" and on the Edit subnet blade, specify the following settings:
 
 | Subnet name: | Enter "Public".|
+| ------ | ----- |  
 | Subnet address range: | Enter "10.0.0.0/24".|
-Click "Review + create" and then click "Create" to create the virtual network.
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/80e2ed79-9e7e-4099-b90b-ce014ddcd1c8" height="90%" width="90%" alt="Create Public Subnet"/>  
+  
+- Click "Review + create" and then click "Create" to create the virtual network.
   
 </details>  
 
@@ -52,13 +59,22 @@ Click on the "myVirtualNetwork" entry.
 In the Settings section, click on "Subnets".
 
 On the Subnets blade, click "+ Subnet" to add a new subnet.
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/a0eaca48-d7c6-45ed-af11-a79fba3cb668" height="90%" width="90%" alt="Add a Subnet"/>
+  
 
 On the Add subnet blade, specify the following settings:
 
 | Subnet name: | Enter "Private".|
+|--------|-----|  
 | Subnet address range: | Enter "10.0.1.0/24".|
 | Service endpoints: | Select "Microsoft.Storage".|
+  
 Click "Save" to add the new subnet.
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/e9316c6c-f0fc-4b80-b5a7-71a56ceb28f8" height="50%" width="50%" alt="Add a Private Subnet"/>  
+  
+  >**Note**: The virtual network now has two subnets: Public and Private.  
   
 </details>
 
@@ -83,11 +99,18 @@ On the Basics tab of the Create network security group blade, specify the follow
 | Resource group: | Select "AZ500LAB12".|
 | Name: | Enter "myNsgPrivate".|
 | Region: | Select "South Central US".|
+  
 Click "Review + create" and then click "Create" to create the network security group.
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/117fb978-89b2-4a71-a196-d3b004fdb099" height="60%" width="60%" alt="Crteate Network Security Group"/>
+  
 
 On the myNsgPrivate blade, in the Settings section, click "Outbound security rules".
 
 On the Outbound security rules blade, click "+ Add" to add a new outbound security rule.
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/e4df1b28-caab-4b0f-ac1f-1c8ad84409a1" height="90%" width="90%" alt="Add Outbound Security Rules"/>
+  
 
 On the Add outbound security rule blade, specify the following settings to allow outbound traffic to Azure Storage:
 
@@ -102,8 +125,54 @@ On the Add outbound security rule blade, specify the following settings to allow
 |Action: | Select "Allow" |
 |Priority: | Enter "1000" |
 | Name: | Enter "Allow-Storage-All|
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/2cffba2c-f283-4fb8-9ada-1c6618297148" height="40%" width="40%" alt="Create Outbound Security Rule Settings"/> 
+  
+On the Add outbound security rule blade, click Add to create the new outbound rule.
 
-On the Add inbound security rule blade, click Add to create the new inbound rule.
+On the myNsgPrivate blade, in the Settings section, click Outbound security rules, and then click + Add.
+
+On the Add outbound security rule blade, specify the following settings to explicitly deny outbound traffic to Internet (leave all other values with their default settings):
+
+| Setting |	Value|
+|-------|-------|  
+| Source |	Service Tag|
+| Source service tag |	VirtualNetwork||
+| Source port ranges |	*|
+| Destination |	Service Tag|
+| Destination service tag |	Internet|
+| Destination port ranges|	*|
+| Protocol |	Any|
+| Action |	Deny|
+| Priority |	1100|
+| Name |	Deny-Internet-All|
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/d52f6c89-d3c3-4035-8348-dbbde5ffdd2b" height="40%" width="40%" alt="Create Outbound Security Rule Settings (2)"/>  
+  
+  >**Note**: This rule overrides a default rule in all network security groups that allows outbound internet communication.
+
+  >**Note**: In the next steps, you will create an inbound security rule that allows Remote Desktop Protocol (RDP) traffic to the subnet. The rule overrides a default security rule that denies all inbound traffic from the internet. Remote Desktop connections are allowed to the subnet so that connectivity can be tested in a later step.  
+  
+On the Add inbound security rule blade, click Add to create the new inbound rule.  
+
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/c6f61f64-23ec-4952-be8f-da28504e4bc9" height="100%" width="100%" alt="Create Inbound Security Rule Setting"/>
+  
+  On the myNsgPrivate blade, in the Settings section, click Inbound security rules and then click + Add.
+
+On the Add inbound security rule blade, specify the following settings (leave all other values with their default values):
+
+| Setting |	Value|
+|------|------|  
+| Source |	Any|
+| Source port ranges |	*|
+| Destination |	Service Tag|
+| Destination service tag	| VirtualNetwork|
+| Destination port ranges |	3389|
+| Protocol |	TCP|
+| Action |	Allow|
+| Priority |	1200|
+| Name |	Allow-RDP-All|
+  
 
   >**Note**: Now you will associate the network security group with the Private subnet.
 
@@ -113,6 +182,9 @@ On the Subnets blade, select + Associate and specify the following settings in t
 |--------|------|  
 | Virtual network |	myVirtualNetwork|
 | Subnet |	Private |
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/d2f38c50-04b2-4da9-be30-bcc09f79a92b" height="80%" width="80%" alt="Associate NSG to Prviate Subnet"/>
+  
 
 </details>     
   
@@ -137,10 +209,14 @@ On the Basics tab of the Create network security group blade, specify the follow
 | Setting |	Value|
 |-------|-------|  
 | Subscription |	the name of the Azure subscription you are using in this lab|
-| Resource group	AZ500LAB12
+| Resource group |	AZ500LAB12|
 | Name |	myNsgPublic|
 | Region |	South Central US|
-Click Review + create and then click Create.
+  
+Click Review + create and then click Create. 
+  
+  <img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/dabe05fa-5207-4f07-abac-c0cce6b31706" height="60%" width="60%" alt="Create Network Security Group Public"/>
+
 
   >**Note**: In the next steps, you will create an outbound security rule that allows communication to the Azure Storage service.
 
@@ -161,7 +237,10 @@ On the Add inbound security rule blade, specify the following settings (leave al
 | Action |	Allow|
 | Priority |	1200|
 | Name |	Allow-RDP-All|
-On the Add inbound security rule blade, click Add to create the new inbound rule.
+  
+On the Add inbound security rule blade, click Add to create the new inbound rule.  
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/4bd6da8e-76a5-4a6d-b7da-c8fbf4210adc" height="90%" width="90%" alt="Create Inbound Security Rule (public)"/>  
 
  >**Note**: Now you will associate the network security group with the Public subnet.
 
@@ -171,6 +250,9 @@ On the Subnets blade, select + Associate and specify the following settings in t
 |------|-------|  
 |Virtual network	| myVirtualNetwork|
 |Subnet |	Public|
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/4035cbfd-ebe3-4939-b42b-d70dc029e074" height="90%" width="90%" alt="Associate NSG to Public Subnet"/>
+  
 
 </details> 
 
@@ -193,13 +275,18 @@ On the Storage accounts blade, click + Create.
 On the Basics tab of the Create storage account blade, specify the following settings (leave others with their default values):
 
 | Setting |	Value|
+|------|------|  
 | Subscription |	the name of the Azure subscription you are using in this lab|
 | Resource group |	AZ500LAB12|
 | Storage account name |	any globally unique name between 3 and 24 in length consisting of letters and digits|
 | Location |	(US) EastUS|
 | Performance |	Standard (general-purpose v2 account)|
 | Redundency |	Locally redundant storage (LRS)|
+  
 On the Basics tab of the Create storage account blade, click Review + Create, wait for the validation process to complete, and click Create.
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/1454986c-12e0-4436-9e28-258e214a650e" height="60%" width="60%" alt="Create Storage Account"/>
+  
 
   >**Note**: Wait for the Storage account to be created. This should take about 2 minutes.
 
@@ -216,6 +303,9 @@ On the New file share blade, specify the following settings:
 Setting	Value
 Name	my-file-share
 On the New file share blade, click Create.
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/81d89556-648f-4afc-9486-4ea90c179fa6" height="80%" width="80%" alt="Create a File Share"/>
+  
 
   >**Note**: Now, retrieve and record the PowerShell script that creates a drive mapping to the Azure file share.
 
