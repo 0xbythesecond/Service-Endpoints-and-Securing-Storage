@@ -1,6 +1,10 @@
 # Service-Endpoints-and-Securing-Storage
 
-<img src="https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg" height="60%" width="60%"/>
+<p align="center">
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/9a52059f-6fda-43a7-bf25-31d2b558e1ef" height="80%" width="80%" alt="Service Endpoints and Securing Storage"/>
+</p>  
+
+<!--img src="https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg" height="60%" width="60%"-->
 
 In this lesson, you will learn how to configure service endpoints and secure storage in Azure. You will perform various tasks such as creating a virtual network, configuring subnets, setting up network security groups, creating storage accounts, deploying virtual machines, and testing storage connections. This lab can be found from [Microsoft](https://microsoftlearning.github.io/AZ500-AzureSecurityTechnologies/Instructions/Labs/LAB_12_SecuringAzureStorage.html).
 
@@ -312,6 +316,9 @@ On the New file share blade, click Create.
 On the storage account blade, in the list of file shares, click my-file-share.
 
 On the my-file-share blade, click Connect.
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/ddf9be24-21bd-4362-9a7d-e878644b4097" height="90%" width="90%" alt="Connect File Share"/>
+  
 
 On the Connect blade, on the Windows tab, copy the PowerShell script that creates a Z drive mapping to the file share.
 
@@ -320,6 +327,8 @@ On the Connect blade, on the Windows tab, copy the PowerShell script that create
 Navigate back to the storage account blade, then in the Security + networking section, click Networking.
 
 Under Firewalls and virtual networks blade, select the Enabled from selected virtual networks and IP addresses option and click the + Add existing virtual network link.
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/c0a08a58-ec3e-41ce-a3f1-073b81618da6" height="100%" width="100%" alt="Add an Existing Virtual Network to Storage Account"/>  
 
 On the Add networks blade, specify the following settings:
 
@@ -328,6 +337,9 @@ On the Add networks blade, specify the following settings:
 | Subscription |	the name of the Azure subscription you are using in this lab|
 | Virtual networks |	myVirtualNetwork| 
 |Subnets |	Private|
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/7bac14aa-ed3b-4c13-ba56-646e5f6d0aeb" height="30%" width="30%" alt="Add Network to Storage Account"/>
+  
   
 On the Add networks blade, click Add.
 
@@ -369,10 +381,16 @@ On the Basics tab of the Create a virtual machine blade, specify the following s
 | Public inbound ports |	None| 
   
 Already have a Windows Server license	Not selected
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/0f085d38-15fc-46bb-8b3c-79cc9c2e3e37" height="90%" width="90%" alt="create vm"/>
+  
 
   >**Note**: For public inbound ports, we will rely on the precreated NSG.
 
 Click Next: Disks > and, on the Disks tab of the Create a virtual machine blade, set the OS disk type to Standard HDD and click Next: Networking >.
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/79f6d26c-5d3e-49c4-b2e3-1fa60fb84452" height="70%" width="70%" alt="Disk Settings for VM"/>
+  
 
 Click Next: Networking >, on the Networking tab of the Create a virtual machine blade, specify the following settings (leave others with their default values):
 
@@ -382,6 +400,10 @@ Click Next: Networking >, on the Networking tab of the Create a virtual machine 
 | Subnet |	Private (10.0.1.0/24)|
 | Public IP |	(new)myVmPrivate-ip|
 | NIC network security group |	None|
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/5440fde5-f2bb-4232-88c9-4fa76d3aaa71" height="90%" width="90%" alt="vm networking settings"/>
+  
+  
 Click Next: Management >, on the Management tab of the Create a virtual machine blade, accept the default settings and click Review + create.
 
 On the Review + create blade, ensure that validation was successful and click Create.
@@ -393,18 +415,26 @@ On the Virtual machines blade, click + Add and, in the dropdown list, click + Az
 On the Basics tab of the Create a virtual machine blade, specify the following settings (leave others with their default values):
 
 | Setting |	Value|
-Subscription	the name of the Azure subscription you will be using in this lab
-Resource group	AZ500LAB12
-Virtual machine name	myVmPublic
-Region	(US)East US
-Image	Windows Server 2022 Datacenter: Azure Edition - Gen 2
-Username	localadmin
-Password	Please use your personal password created in Lab 04 > Exercise 1 > Task 1 > Step 9.
-Public inbound ports	None
-Already have a Windows Server license	Not selected
-Note: For public inbound ports, we will rely on the precreated NSG.
+|------|------|  
+| Subscription |	the name of the Azure subscription you will be using in this lab|
+| Resource group |	AZ500LAB12|
+| Virtual machine name |	myVmPublic|
+| Region |	(US)South Central US|
+|Image |	Windows Server 2022 Datacenter: Azure Edition - Gen 2|
+| Username |	localadmin|
+| Password |	Please use your personal password created in Lab 04 > Exercise 1 > Task 1 > Step 9.|
+| Public inbound ports |	None|
+| Already have a Windows Server license |	Not selected|
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/5eddf5db-efd6-4aea-9996-5855ac25d6ac" height="70%" width="70%" alt="Create Public VM"/>
+  
+  
+  >**Note**: For public inbound ports, we will rely on the precreated NSG.
 
 Click Next: Disks > and, on the Disks tab of the Create a virtual machine blade, set the OS disk type to Standard HDD and click Next: Networking >.
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/77a0f893-2df0-4e07-b887-93045f02629f" height="70%" width="70%" alt="Create Disk for Public VM"/>
+  
 
 Click Next: Networking >, on the Networking tab of the Create a virtual machine blade, specify the following settings (leave others with their default values):
 
@@ -414,6 +444,10 @@ Click Next: Networking >, on the Networking tab of the Create a virtual machine 
 | Subnet |	Public (10.0.0.0/24)|
 | Public IP |	(new)myVmPublic-ip|
 NIC network security group |	None|
+  
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/5e448924-4b6d-4567-9b0d-b486b31110bf" height="70%" width="70%" alt="VM Networking Settings Public"/>
+  
+  
 Click Next: Management >, on the Management tab of the Create a virtual machine blade, accept the default settings and click Review + create.
 
 On the Review + create blade, ensure that validation was successful and click Create.
@@ -473,15 +507,31 @@ Start File Explorer and verify that the Z: drive mapping has been successfully c
 
 Next, from the console pane of the Windows PowerShell ISE console, run the following to verify that the virtual machine has no outbound connectivity to the internet:
 
-Code
+```powershell
  Test-NetConnection -ComputerName www.bing.com -Port 80
-Note: The test will fail because the network security group associated with the Private subnet does not allow outbound access to the internet.
+```
+
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/444e5c42-abf7-421b-89d9-4a67bf16711d" height="90%" width="90%" alt="Powershell Success Z drive and Failed Internet Connection"/>
+  
+  
+  >**Note**: The test will fail because the network security group associated with the Private subnet does not allow outbound access to the internet.
 
 Terminate the Remote Desktop session to the myVMPrivate Azure VM.
 
   >**Note**: At this point, you have confirmed that the virtual machine in the Private subnet can access the storage account.
 
-Task 8: Test the storage connection from the public subnet to confirm that access is denied
+  </details>
+  
+#
+  
+<details>   
+  
+<summary> 
+  
+### Task 8: Test the storage connection from the public subnet to confirm that access is denied
+  
+</summary> 
+  
 Navigate back to the Virtual machines blade.
 
 On the Virtual machines blade, click the myVMPublic entry.
@@ -512,7 +562,9 @@ Next, from the console pane of the Windows PowerShell ISE console, run the follo
 ```powershell
  Test-NetConnection -ComputerName www.bing.com -Port 80
 ``` 
+<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/9c187724-af32-48d4-992d-4cb22ab6cdf4" height="70%" width="70%" alt="Powershell Failed Z drive Connection and Successful Internet Connection"/>
  
+  
   >**Note**: The test will succeed because there is no outbound security rule to deny internet on the Public subnet.
 
 Terminate the Remote Desktop session to the myVMPublic Azure VM.
