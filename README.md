@@ -520,7 +520,7 @@ Terminate the Remote Desktop session to the myVMPrivate Azure VM.
 
   >**Note**: At this point, you have confirmed that the virtual machine in the Private subnet can access the storage account.
 
-  </details>
+</details>
   
 #
   
