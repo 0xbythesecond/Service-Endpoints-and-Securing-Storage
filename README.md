@@ -377,7 +377,7 @@ On the Basics tab of the Create a virtual machine blade, specify the following s
 | Region |	(US)East US|
 | Image	Windows Server 2022 Datacenter: | Azure Edition - Gen 2|
 | Username |	localadmin|
-| Password |	Please use your personal password created in Lab 04 > Exercise 1 > Task 1 > Step 9.
+| Password |	Use a Random Password that think is secure
 | Public inbound ports |	None| 
   
 Already have a Windows Server license	Not selected
