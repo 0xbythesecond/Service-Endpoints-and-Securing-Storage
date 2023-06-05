@@ -1,4 +1,4 @@
-# Service-Endpoints-and-Securing-Storage
+# Service Endpoints and Securing Storage
 
 <p align="center">
 <img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/9a52059f-6fda-43a7-bf25-31d2b558e1ef" height="80%" width="80%" alt="Service Endpoints and Securing Storage"/>
@@ -459,6 +459,7 @@ On the Review + create blade, ensure that validation was successful and click Cr
 #
 
 <details>
+  
 <summary>
   
 ### Task 7: Test the storage connection from the private subnet to confirm that access is allowed
