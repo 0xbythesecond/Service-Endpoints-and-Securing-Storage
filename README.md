@@ -420,7 +420,7 @@ On the Basics tab of the Create a virtual machine blade, specify the following s
 | Resource group |	AZ500LAB12|
 | Virtual machine name |	myVmPublic|
 | Region |	(US)South Central US|
-|Image |	Windows Server 2022 Datacenter: Azure Edition - Gen 2|
+| Image |	Windows Server 2022 Datacenter: Azure Edition - Gen 2|
 | Username |	localadmin|
 | Password |	Please use your personal password created in Lab 04 > Exercise 1 > Task 1 > Step 9.|
 | Public inbound ports |	None|
@@ -519,6 +519,7 @@ Next, from the console pane of the Windows PowerShell ISE console, run the follo
 Terminate the Remote Desktop session to the myVMPrivate Azure VM.
 
   >**Note**: At this point, you have confirmed that the virtual machine in the Private subnet can access the storage account.
+  
 </details>
   
 #
