@@ -460,12 +460,12 @@ On the Review + create blade, ensure that validation was successful and click Cr
 
 <details>
 
-<summary> 
-
+<summary>
+  
 ### Task 7: Test the storage connection from the private subnet to confirm that access is allowed
   
 </summary> 
-
+  
 In this task, you will connect to the myVMPrivate virtual machine via Remote Desktop and map a drive to the file share.
 
 Navigate back to the Virtual machines blade.
@@ -562,6 +562,7 @@ Next, from the console pane of the Windows PowerShell ISE console, run the follo
 ```powershell
  Test-NetConnection -ComputerName www.bing.com -Port 80
 ``` 
+  
 <img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/9c187724-af32-48d4-992d-4cb22ab6cdf4" height="70%" width="70%" alt="Powershell Failed Z drive Connection and Successful Internet Connection"/>
  
   
