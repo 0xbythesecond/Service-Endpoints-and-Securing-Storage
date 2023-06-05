@@ -459,7 +459,6 @@ On the Review + create blade, ensure that validation was successful and click Cr
 #
 
 <details>
-
 <summary>
   
 ### Task 7: Test the storage connection from the private subnet to confirm that access is allowed
@@ -519,7 +518,6 @@ Next, from the console pane of the Windows PowerShell ISE console, run the follo
 Terminate the Remote Desktop session to the myVMPrivate Azure VM.
 
   >**Note**: At this point, you have confirmed that the virtual machine in the Private subnet can access the storage account.
-
 </details>
   
 #
