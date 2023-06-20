@@ -136,7 +136,7 @@ On the Add outbound security rule blade, click Add to create the new outbound ru
 
 On the myNsgPrivate blade, in the Settings section, click Outbound security rules, and then click + Add.
 
-On the Add outbound security rule blade, specify the following settings to explicitly deny outbound traffic to Internet (leave all other values with their default settings):
+On the Add outbound security rule blade, specify the following settings to explicitly deny outbound traffic to the Internet (leave all other values with their default settings):
 
 | Setting |	Value|
 |-------|-------|  
@@ -217,12 +217,12 @@ On the Basics tab of the Create network security group blade, specify the follow
 | Name |	myNsgPublic|
 | Region |	South Central US|
   
-Click Review + create and then click Create. 
+Click Review + Create and then click Create. 
   
   <img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/dabe05fa-5207-4f07-abac-c0cce6b31706" height="60%" width="60%" alt="Create Network Security Group Public"/>
 
 
-  >**Note**: In the next steps, you will create an outbound security rule that allows communication to the Azure Storage service.
+  >**Note**: In the next steps, you will create an outbound security rule that allows communication with the Azure Storage service.
 
 In the Azure portal, navigate back to the Network security groups blade and click the myNsgPublic entry.
 
@@ -285,7 +285,7 @@ On the Basics tab of the Create storage account blade, specify the following set
 | Storage account name |	any globally unique name between 3 and 24 in length consisting of letters and digits|
 | Location |	(US) EastUS|
 | Performance |	Standard (general-purpose v2 account)|
-| Redundency |	Locally redundant storage (LRS)|
+| Redundancy |	Locally redundant storage (LRS)|
   
 On the Basics tab of the Create storage account blade, click Review + Create, wait for the validation process to complete, and click Create.
   
@@ -322,7 +322,7 @@ On the my-file-share blade, click Connect.
 
 On the Connect blade, on the Windows tab, copy the PowerShell script that creates a Z drive mapping to the file share.
 
-  >**Note**: Record this script. You will need this in a later in this lab in order to map the file share from the Azure virtual machine on the Private subnet.
+  >**Note**: Record this script. You will need this later in this lab in order to map the file share from the Azure virtual machine on the Private subnet.
 
 Navigate back to the storage account blade, then in the Security + networking section, click Networking.
 
@@ -429,7 +429,7 @@ On the Basics tab of the Create a virtual machine blade, specify the following s
 <img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/5eddf5db-efd6-4aea-9996-5855ac25d6ac" height="70%" width="70%" alt="Create Public VM"/>
   
   
-  >**Note**: For public inbound ports, we will rely on the precreated NSG.
+  >**Note**: For public inbound ports, we will rely on the pre-created NSG.
 
 Click Next: Disks > and, on the Disks tab of the Create a virtual machine blade, set the OS disk type to Standard HDD and click Next: Networking >.
   
@@ -472,9 +472,9 @@ Navigate back to the Virtual machines blade.
 
 On the Virtual machines blade, click the myVMPrivate entry.
 
-On the myVMPrivate blade, click Connect and, in the drop down menu, click RDP.
+On the myVMPrivate blade, click Connect and, in the drop-down menu, click RDP.
 
-Click Download RDP File and use it to connect to the myVMPrivate Azure VM via Remote Desktop. When prompted to authenticate, provide the following credntials:
+Click Download RDP File and use it to connect to the myVMPrivate Azure VM via Remote Desktop. When prompted to authenticate, provide the following credentials:
 
 | Setting |	Value|
 |------|------|
@@ -501,7 +501,7 @@ Within the Windows PowerShell ISE window, open the Script pane, then paste and r
  }
  ```
  
-  >**Note**: The <storage_account_name> placeholder represents the name of the storage account hosting the file share and <storage_account_key> one its primary key
+  >**Note**: The <storage_account_name> placeholder represents the name of the storage account hosting the file share and <storage_account_key> on its primary key
 
 Start File Explorer and verify that the Z: drive mapping has been successfully created.
 
@@ -536,9 +536,9 @@ Navigate back to the Virtual machines blade.
 
 On the Virtual machines blade, click the myVMPublic entry.
 
-On the myVMPublic blade, click Connect and, in the drop down menu, click RDP.
+On the myVMPublic blade, click Connect and, in the drop-down menu, click RDP.
 
-Click Download RDP File and use it to connect to the myVMPublic Azure VM via Remote Desktop. When prompted to authenticate, provide the following credntials:
+Click Download RDP File and use it to connect to the myVMPublic Azure VM via Remote Desktop. When prompted to authenticate, provide the following credentials:
 
 |Setting	| Value|
 |-------|------|
@@ -553,9 +553,9 @@ Within the Remote Desktop session to myVMPublic, click Start and then click Wind
 
 Within the Windows PowerShell ISE window, open the Script pane, then paste and run the same PowerShell script that you ran within the Remote Desktop session to the myVMPrivate Azure VM.
 
-  >**Note**: This time, you will receive the New-PSDrive : Access is denied error.
+  >**Note**: This time, you will receive the New-PSDrive: Access is denied error.
 
-  >**Note**: Access is denied because the myVmPublic virtual machine is deployed in the Public subnet. The Public subnet does not have a service endpoint enabled for the Azure Storage. The storage account only allows network access from the Private subnet.
+  >**Note**: Access is denied because the myVmPublic virtual machine is deployed in the Public subnet. The Public subnet does not have a service endpoint enabled for Azure Storage. The storage account only allows network access from the Private subnet.
 
 Next, from the console pane of the Windows PowerShell ISE console, run the following to verify that the virtual machine has outbound connectivity to the internet:
 
@@ -576,7 +576,7 @@ Clean up resources
 
 Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not incur unexpected costs.
 
-Open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, select PowerShell and Create storage.
+Open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, select PowerShell and Create Storage.
 
 Ensure PowerShell is selected in the drop-down menu in the upper-left corner of the Cloud Shell pane.
 
