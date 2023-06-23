@@ -1,8 +1,6 @@
 # Service Endpoints and Securing Storage
 
-<p align="center">
-<img src="https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/9a52059f-6fda-43a7-bf25-31d2b558e1ef" height="80%" width="80%" alt="Service Endpoints and Securing Storage"/>
-</p>  
+![Service Endpoints and Securing Storage](https://github.com/0xbythesecond/Service-Endpoints-and-Securing-Storage/assets/23303634/9a52059f-6fda-43a7-bf25-31d2b558e1ef)
 
 <!--img src="https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg" height="60%" width="60%"-->
 
